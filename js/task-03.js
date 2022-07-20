@@ -15,15 +15,14 @@ const images = [
   },
 ];
 
-const itemImg = () => {
-  for (const image of images) {
-    list.insertAdjacentHTML(
-      "beforeend",
+const itemImg = images
+  .map(
+    (image) =>
       `<li class="list-item"><img src="${image.url}" alt="${image.alt}" width="300" height="200"/></li>`
-    );
-  }
-};
-itemImg();
+  )
+  .join("");
+
+list.insertAdjacentHTML("afterbegin", itemImg);
 
 const ul = document.querySelector(".gallery");
 ul.style.listStyle = "none";
